@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  R1:
+    build: .
+    container_name: R1
+    hostname: R1
+    volumes:
+      - ./conf:/etc/bgpd.conf.d
+    networks:
+      bgpnet:
+        ipv4_address: 172.30.0.10
+
+  R2:
+    build: .
+    container_name: R2
+    hostname: R2
+    volumes:
+      - ./conf:/etc/bgpd.conf.d
+    networks:
+      bgpnet:
+        ipv4_address: 172.30.0.20
+
+  R3:
+    build: .
+    container_name: R3
+    hostname: R3
+    volumes:
+      - ./conf:/etc/bgpd.conf.d
+    networks:
+      bgpnet:
+  
+        ipv4_address: 172.30.0.30
+
+  R4:
+    build: .
+    container_name: R4
+    hostname: R4
+    volumes:
+      - ./conf:/etc/bgpd.conf.d
+    networks:
+      bgpnet:
+        ipv4_address: 172.30.0.40
+
+networks:
+  bgpnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
