@@ -1,1 +1,6 @@
-tba
+- name: Deploy ASPA-lab containers
+  hosts: labhosts
+  become: true
+  roles:
+    - deploy
+
